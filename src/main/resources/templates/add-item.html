@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Vendor - Add Item</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; padding: 40px; background-color: #f8f9fa; }
+        .container { background: white; padding: 30px; border-radius: 12px; width: 450px; margin: auto; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        h2 { color: #333; text-align: center; border-bottom: 2px solid #007bff; padding-bottom: 10px; }
+        label { display: block; margin-top: 15px; font-weight: bold; color: #555; }
+        input, select { width: 100%; padding: 12px; margin-top: 5px; border: 1px solid #ddd; border-radius: 6px; box-sizing: border-box; }
+        button { width: 100%; padding: 12px; background: #007bff; color: white; border: none; border-radius: 6px; margin-top: 25px; cursor: pointer; font-size: 16px; font-weight: bold; }
+        .alert { color: #155724; background-color: #d4edda; padding: 10px; border-radius: 4px; text-align: center; margin-bottom: 20px; }
+    </style>
+</head>
+<body>
+<nav style="background-color: #333; overflow: hidden; display: flex; justify-content: center; padding: 10px 0; margin-bottom: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.2);">
+    <a href="/vendor/add-item" style="color: white; text-align: center; padding: 14px 20px; text-decoration: none; font-weight: bold;">➕ Add Item (Vendor)</a>
+    <a href="/user/items" style="color: white; text-align: center; padding: 14px 20px; text-decoration: none; font-weight: bold;">📋 View Services</a>
+    <a href="/user/view-cart" style="color: #ff9f43; text-align: center; padding: 14px 20px; text-decoration: none; font-weight: bold;">🛒 My Cart</a>
+    <a href="/h2-console" target="_blank" style="color: #00d4ff; text-align: center; padding: 14px 20px; text-decoration: none; font-weight: bold;">🗄️ Database</a>
+</nav>
+
+<div class="container">
+    <h2>Add New Service / Item</h2>
+
+    <div th:if="${param.success}" class="alert">
+        🎉 Item Added Successfully!
+    </div>
+
+    <form th:action="@{/vendor/save-item}" th:object="${item}" method="post">
+        <label>Item Name:</label>
+        <input type="text" th:field="*{itemName}" placeholder="e.g. Wedding Decor" required />
+
+        <label>Price (₹):</label>
+        <input type="number" th:field="*{price}" step="0.01" placeholder="Enter price" required />
+
+        <label>Product Status:</label>
+        <select th:field="*{status}">
+            <option value="Available">Available</option>
+            <option value="Out of Stock">Out of Stock</option>
+            <option value="Discontinued">Discontinued</option>
+        </select>
+
+        <button type="submit">List My Service</button>
+    </form>
+
+    <div style="text-align: center; margin-top: 15px;">
+        <a th:href="@{/admin/maintenance}" style="color: #666; text-decoration: none; font-size: 14px;">← Back to Admin Menu</a>
+    </div>
+</div>
+
+</body>
+</html>

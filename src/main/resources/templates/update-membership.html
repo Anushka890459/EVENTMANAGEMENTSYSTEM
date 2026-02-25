@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Update Membership</title>
+  <style>
+    body { font-family: sans-serif; padding: 40px; }
+    .box { border: 1px solid #ccc; padding: 20px; width: 450px; margin: auto; }
+    .error { color: red; }
+  </style>
+</head>
+<body>
+<div class="box">
+  <h2>Update Membership</h2>
+  <form th:action="@{/admin/fetch-membership}" method="post">
+    <label>Membership Number:</label>
+    <input type="number" name="membershipNumber" required />
+    <button type="submit">Fetch Details</button>
+  </form>
+
+  <p th:if="${error}" class="error" th:text="${error}"></p>
+
+  <div th:if="${membership != null and membership.vendorName != null}" style="margin-top: 20px;">
+    <form th:action="@{/admin/save-membership}" th:object="${membership}" method="post">
+      <input type="hidden" th:field="*{membershipNumber}" />
+      <label>Vendor Name:</label>
+      <input type="text" th:field="*{vendorName}" readonly />
+      <br><br>
+      <label>Extension Period:</label>
+      <select th:field="*{duration}">
+        <option value="6 months extension">6 Months Extension</option>
+        <option value="1 year extension">1 Year Extension</option>
+      </select>
+      <br><br>
+      <button type="submit">Update Now</button>
+    </form>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Add User/Vendor</title>
+  <style>
+    body { font-family: 'Segoe UI', sans-serif; padding: 40px; background-color: #f4f7f6; }
+    .container { background: white; padding: 30px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); width: 450px; margin: auto; }
+    h2 { color: #333; border-bottom: 2px solid #007bff; padding-bottom: 10px; }
+    .form-group { margin-bottom: 15px; }
+    label { display: block; font-weight: bold; margin-bottom: 5px; }
+    input, select { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
+    button { background-color: #007bff; color: white; padding: 10px 15px; border: none; border-radius: 4px; cursor: pointer; width: 100%; font-weight: bold; }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h2>Add New User / Vendor</h2>
+  <form th:action="@{/admin/save-user}" method="post">
+
+    <div class="form-group">
+      <label>Username:</label>
+      <input type="text" name="username" required />
+    </div>
+
+
+
+    <div class="form-group">
+      <label>Select Role:</label>
+      <select name="role">
+        <option value="USER">Standard User</option>
+        <option value="ADMIN">System Admin</option>
+      </select>
+    </div>
+
+    <button type="submit">Create Account</button>
+  </form>
+
+  <br>
+  <a th:href="@{/admin/maintenance}">Back to Menu</a>
+</div>
+
+</body>
+</html>

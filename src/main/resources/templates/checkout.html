@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Booking Success</title>
+  <style>
+    body {
+        font-family: 'Segoe UI', sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background-color: #f0fdf4;
+    }
+    .success-box {
+        text-align: center;
+        background: white;
+        padding: 50px;
+        border-radius: 20px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        border-top: 8px solid #22c55e;
+    }
+    .icon {
+        font-size: 60px;
+        color: #22c55e;
+        margin-bottom: 20px;
+    }
+    h1 { color: #1f2937; margin-bottom: 10px; }
+    p { color: #6b7280; margin-bottom: 30px; font-size: 18px; }
+    .btn-home {
+        background: #1a73e8;
+        color: white;
+        padding: 12px 30px;
+        text-decoration: none;
+        border-radius: 8px;
+        font-weight: bold;
+        transition: 0.3s;
+    }
+    .btn-home:hover { background: #1557b0; }
+  </style>
+</head>
+<body>
+
+<div class="success-box">
+  <div class="icon">✔</div>
+  <h1>Booking Confirmed!</h1>
+  <p>Thank you! Your event services have been successfully booked.</p>
+  <br><br>
+  <a href="/user/items" class="btn-home">Back to Services</a>
+</div>
+
+</body>
+</html>

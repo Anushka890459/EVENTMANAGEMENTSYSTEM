@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Your Booking Cart</title>
+  <style>
+    body { font-family: 'Segoe UI', sans-serif; background: #f4f7f6; padding: 40px; }
+    .cart-container { background: white; padding: 30px; border-radius: 15px; max-width: 700px; margin: auto; box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
+    table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+    th, td { padding: 15px; text-align: left; border-bottom: 1px solid #eee; }
+    .total-section { text-align: right; margin-top: 20px; font-size: 22px; font-weight: bold; color: #2ecc71; }
+    .btn-checkout { display: block; width: 100%; padding: 15px; background: #1a73e8; color: white; border: none; border-radius: 8px; font-size: 18px; cursor: pointer; text-decoration: none; text-align: center; margin-top: 20px; }
+  </style>
+</head>
+<body>
+
+
+
+<div class="cart-container">
+  <h2>🛒 Your Selected Services</h2>
+  <table>
+    <thead>
+    <tr>
+      <th>Service Name</th>
+      <th>Price</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="item : ${cartItems}">
+      <td th:text="${item.itemName}">Item</td>
+      <td th:text="'₹' + ${item.price}">0</td>
+    </tr>
+    </tbody>
+  </table>
+
+  <div class="total-section">
+    Total Amount: <span th:text="'₹' + ${totalPrice}">0</span>
+  </div>
+
+  <a href="/user/checkout" class="btn-checkout">Proceed to Checkout</a>
+  <div style="text-align: center; margin-top: 15px;">
+    <a href="/user/items" style="color: #666; text-decoration: none;">← Add More Services</a>
+  </div>
+</div>
+
+</body>
+</html>
